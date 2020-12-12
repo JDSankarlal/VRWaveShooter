@@ -13,15 +13,14 @@ public class BulletManager : MonoBehaviour
     {
         bulletPoolManager = GameObject.FindWithTag("Manager").GetComponent<BulletPoolManager>();
         inputScript = GameObject.Find("InputManager").GetComponent<InputManager>();     
-        
-         StartCoroutine(CheckReset());
+        StartCoroutine(CheckReset());
          
     }
 
     // Update is called once per frame
     void Update()
     {
-       MoveBullet();
+       //MoveBullet();
        CheckReset();        
     }
 
@@ -33,7 +32,7 @@ public class BulletManager : MonoBehaviour
 
     void MoveBullet()
     {
-        this.GetComponent<Rigidbody>().AddForce(inputScript.leftControllerObject.transform.forward * bulletSpeed, ForceMode.Force);
+       
 
     }
     

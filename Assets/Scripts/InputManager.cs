@@ -18,7 +18,7 @@ public class InputManager : MonoBehaviour
     void Start()
     {
         UnityEngine.XR.InputDevices.GetDevicesWithCharacteristics(UnityEngine.XR.InputDeviceCharacteristics.HeldInHand | UnityEngine.XR.InputDeviceCharacteristics.Left, leftController);
-        
+    
         foreach (var device in leftController)
         {
             Debug.Log(string.Format("Device found with name '{0}' and has characteristics '{1}'", device.name, device.characteristics.ToString()));
@@ -39,7 +39,8 @@ public class InputManager : MonoBehaviour
         {
             rightDevice = rightController[0];
         }
-             
+        
+        StartCoroutine("FireBullet");
     }
 
     // Update is called once per frame
@@ -50,6 +51,7 @@ public class InputManager : MonoBehaviour
         if (primaryButtonState > 0.7)
         {
             isFiring = true;
+            Debug.Log("Trigger pressed!");
         }
 
         else
@@ -57,23 +59,18 @@ public class InputManager : MonoBehaviour
             isFiring = false;
         }
 
-        if (isFiring)
-        {
-           FireBullet();
-        }
     }
 
     IEnumerator FireBullet()
     {
         while (true)
         {
-            yield return new WaitForSeconds(0.25f);
+            yield return new WaitForSeconds(0.15f);
             if (isFiring)
             {
                 GameObject refBullet = bulletPoolManager.GetBullet();
                 refBullet.transform.position = leftControllerObject.transform.position;
                 refBullet.transform.rotation = leftControllerObject.transform.rotation;
-               
             }
         }
     }

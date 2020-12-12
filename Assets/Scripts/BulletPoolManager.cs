@@ -18,7 +18,6 @@ public class BulletPoolManager : MonoBehaviour
             obj.SetActive(false);
             bulletPool.Add(obj);
         }
-        StartCoroutine(FireBullet());
     }
 
     public GameObject GetBullet()
@@ -35,10 +34,5 @@ public class BulletPoolManager : MonoBehaviour
         bulletPool.Add(bullet);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
  
 }
