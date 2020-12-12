@@ -640,7 +640,7 @@ GameObject:
   - component: {fileID: 1046957368}
   m_Layer: 0
   m_Name: BulletPool
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -657,7 +657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 802750efe9c4a9042b1c312ee36f2496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 5746169658400894188, guid: 49dec863c0a7b0e4bad40e04006e9ada, type: 3}
+  bullet: {fileID: 4392281109082832185, guid: 49dec863c0a7b0e4bad40e04006e9ada, type: 3}
   POOL_SIZE: 100
   bulletPool: []
 --- !u!4 &1046957369
@@ -668,11 +668,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1046957367}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5288071, y: -1.2492813, z: 8.639965}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1101068022
 GameObject:
@@ -701,7 +701,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1101068022}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.18, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1091,7 +1091,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1298988664}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -21.30002, y: -8.621564, z: -21.973318}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1325,7 +1325,7 @@ GameObject:
   - component: {fileID: 1882402493}
   m_Layer: 0
   m_Name: InputManager
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1342,6 +1342,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ffb40e4b16209346ae0bf1980d4c5d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leftControllerObject: {fileID: 152171331}
+  rightControllerObject: {fileID: 1101068022}
+  bulletPoolManager: {fileID: 1046957368}
+  bulletManager: {fileID: 0}
+  isFiring: 0
 --- !u!4 &1882402494
 Transform:
   m_ObjectHideFlags: 0
@@ -1354,7 +1359,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1893423388
 GameObject:
@@ -1528,22 +1533,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &542376398918250220
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 922456009960830038}
-  m_Layer: 0
-  m_Name: quest2_contollers_div2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &631251947226057676
 GameObject:
   m_ObjectHideFlags: 0
@@ -1580,20 +1569,6 @@ Transform:
   - {fileID: 1266578451}
   m_Father: {fileID: 1472683536}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &922456009960830038
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 542376398918250220}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1253824169087846707
 GameObject:

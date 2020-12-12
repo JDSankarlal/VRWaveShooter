@@ -14,10 +14,25 @@ public class BulletPoolManager : MonoBehaviour
         bulletPool = new List<GameObject>();
         for (int i=0;i<POOL_SIZE;i++)
         {
-            GameObject obj = (GameObject)Instantiate(bullet);
+            GameObject obj = (GameObject)Instantiate(bullet, this.gameObject.transform);
             obj.SetActive(false);
             bulletPool.Add(obj);
         }
+        StartCoroutine(FireBullet());
+    }
+
+    public GameObject GetBullet()
+    {
+        GameObject bullet = bulletPool[0];
+        bulletPool.RemoveAt(0);
+        bullet.SetActive(true);
+        return bullet;
+    }
+
+    public void ResetBullet(GameObject bullet)
+    {
+        bullet.SetActive(false);
+        bulletPool.Add(bullet);
     }
 
     // Update is called once per frame
@@ -25,4 +40,5 @@ public class BulletPoolManager : MonoBehaviour
     {
         
     }
+ 
 }
