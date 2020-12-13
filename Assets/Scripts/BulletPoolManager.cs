@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BulletPoolManager : MonoBehaviour
 {
+    public InputManager inputScript;
     public GameObject bullet;
     public int POOL_SIZE;
     public List<GameObject> bulletPool;
@@ -17,6 +18,8 @@ public class BulletPoolManager : MonoBehaviour
             GameObject obj = (GameObject)Instantiate(bullet, this.gameObject.transform);
             obj.SetActive(false);
             bulletPool.Add(obj);
+            obj.GetComponent<BulletManager>().bulletPoolManager = this;
+            obj.GetComponent<BulletManager>().inputScript = inputScript;
         }
     }
 

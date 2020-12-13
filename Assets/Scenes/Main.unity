@@ -657,6 +657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 802750efe9c4a9042b1c312ee36f2496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputScript: {fileID: 1882402493}
   bullet: {fileID: 4392281109082832185, guid: 49dec863c0a7b0e4bad40e04006e9ada, type: 3}
   POOL_SIZE: 100
   bulletPool: []
@@ -672,7 +673,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1101068022
 GameObject:
@@ -1345,7 +1346,6 @@ MonoBehaviour:
   leftControllerObject: {fileID: 152171331}
   rightControllerObject: {fileID: 1101068022}
   bulletPoolManager: {fileID: 1046957368}
-  bulletManager: {fileID: 0}
   isFiring: 0
 --- !u!4 &1882402494
 Transform:
@@ -1359,7 +1359,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1893423388
 GameObject:

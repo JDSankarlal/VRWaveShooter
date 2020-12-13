@@ -4,23 +4,19 @@ using UnityEngine;
 
 public class BulletManager : MonoBehaviour
 {
-    public float bulletSpeed = 1000f;
+    public float bulletSpeed;
     public BulletPoolManager bulletPoolManager;
     public InputManager inputScript;
 
     // Start is called before the first frame update
     void Start()
     {
-        bulletPoolManager = GameObject.FindWithTag("Manager").GetComponent<BulletPoolManager>();
-        inputScript = GameObject.Find("InputManager").GetComponent<InputManager>();     
-        StartCoroutine(CheckReset());
-         
+       bulletSpeed = 1000f;
     }
 
     // Update is called once per frame
     void Update()
     {
-       //MoveBullet();
        CheckReset();        
     }
 
@@ -28,13 +24,18 @@ public class BulletManager : MonoBehaviour
     {
         yield return new WaitForSeconds(2.0f);
         bulletPoolManager.ResetBullet(this.gameObject);
+        this.GetComponent<Rigidbody>().velocity = new Vector3(0,0,0);
     }
 
-    void MoveBullet()
+    void OnEnable()
     {
-       
-
+       StartCoroutine(CheckReset());
+       this.GetComponent<Rigidbody>().AddForce(GameObject.Find("LeftHand Controller").transform.forward * bulletSpeed);
     }
     
+    void OnDisable()
+    {
+        StopCoroutine(CheckReset());
+    }
 }
 
