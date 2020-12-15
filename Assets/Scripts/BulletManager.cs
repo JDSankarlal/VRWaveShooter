@@ -30,7 +30,7 @@ public class BulletManager : MonoBehaviour
     void OnEnable()
     {
        StartCoroutine(CheckReset());
-       this.GetComponent<Rigidbody>().AddForce(GameObject.Find("LeftHand Controller").transform.forward * bulletSpeed);
+       this.GetComponent<Rigidbody>().AddForce(GameObject.Find("RightHand Controller").transform.forward * bulletSpeed);
     }
     
     void OnDisable()

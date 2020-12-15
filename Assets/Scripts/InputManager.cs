@@ -9,7 +9,7 @@ public class InputManager : MonoBehaviour
     public List<UnityEngine.XR.InputDevice> leftController = new List<UnityEngine.XR.InputDevice>();
     public List<UnityEngine.XR.InputDevice> rightController = new List<UnityEngine.XR.InputDevice>();
 
-    public GameObject leftControllerObject, rightControllerObject;
+    public GameObject leftControllerObject, rightControllerObject, barrelLoc;
     public BulletPoolManager bulletPoolManager;
 
     private UnityEngine.XR.InputDevice leftDevice, rightDevice;
@@ -46,7 +46,7 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        leftDevice.TryGetFeatureValue(CommonUsages.trigger, out float primaryButtonState);
+        rightDevice.TryGetFeatureValue(CommonUsages.trigger, out float primaryButtonState);
         
         if (primaryButtonState > 0.7)
         {
@@ -69,8 +69,8 @@ public class InputManager : MonoBehaviour
             if (isFiring)
             {
                 GameObject refBullet = bulletPoolManager.GetBullet();
-                refBullet.transform.position = leftControllerObject.transform.position;
-                refBullet.transform.rotation = leftControllerObject.transform.rotation;
+                refBullet.transform.position = barrelLoc.transform.position;
+                refBullet.transform.rotation = barrelLoc.transform.rotation;
             }
         }
     }
