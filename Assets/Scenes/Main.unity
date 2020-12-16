@@ -1212,6 +1212,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 2641208985308472625, guid: de2f5b9f03402f742bb68c35b124d370, type: 3}
   spawns: []
+  childCount: 0
+  enemiesToSpawn: 0
+  currentSpawnCount: 0
+  waveCount: 0
 --- !u!4 &1278948362
 Transform:
   m_ObjectHideFlags: 0
@@ -1366,6 +1370,8 @@ GameObject:
   - component: {fileID: 1841783436}
   - component: {fileID: 1841783435}
   - component: {fileID: 1841783434}
+  - component: {fileID: 1841783439}
+  - component: {fileID: 1841783440}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1487,6 +1493,33 @@ Transform:
   m_Father: {fileID: 872582336}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1841783439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841783433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810c2812fab6b294da10e7f84d30135a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  currentHealth: 0
+--- !u!65 &1841783440
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841783433}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 2, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1864127675
 GameObject:
   m_ObjectHideFlags: 0

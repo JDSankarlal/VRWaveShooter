@@ -6,6 +6,7 @@ public class EnemyController : MonoBehaviour
 {
 
     public GameObject player, enemyBullet, bulletSpawn, playerRig;
+    SpawnZone spawnZone;
     private Vector3 bulletPath;
     public float bulletSpeed, enemySpeed;
     // Start is called before the first frame update
@@ -13,6 +14,7 @@ public class EnemyController : MonoBehaviour
     {
         player = GameObject.FindWithTag("MainCamera");
         playerRig = GameObject.Find("XR Rig");
+        spawnZone = GameObject.Find("Spawn").GetComponent<SpawnZone>();
         StartCoroutine(fireTime());
     }
 
@@ -40,7 +42,6 @@ public class EnemyController : MonoBehaviour
         {
             yield return new WaitForSeconds(1.0f);
             fireBullet();
-        
         }
     }
 
@@ -48,7 +49,20 @@ public class EnemyController : MonoBehaviour
     {
         //this.transform.LookAt(playerRig.transform);
         //this.GetComponent<Rigidbody>().AddRelativeForce(Vector3.Normalize(player.transform.position - this.transform.position * enemySpeed), ForceMode.Force);
+        this.transform.position += (Vector3.Normalize(player.transform.position - this.transform.position) * enemySpeed * Time.deltaTime);
     }
 
+    void OnDestroy()
+    {
+        spawnZone.enemiesDestroyedThisWave++;
+    }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Bullet")
+        {
+            Destroy(this.gameObject);
+            Destroy(other.gameObject);
+        }
+    }
 }
