@@ -6,17 +6,23 @@ public class SpawnZone : MonoBehaviour
 {
     public GameObject enemy;
     public List <GameObject> spawns;
-    private int childCount;
+    public int childCount, enemiesToSpawn, currentSpawnCount, waveCount;
     // Start is called before the first frame update
     void Start()
     {
         addSpawnsToArray();
+        waveCount = 1;
+        enemiesToSpawn = 0;
+        currentSpawnCount = 0;
+        checkWaveIncrease();
+        spawnEnemy();
         StartCoroutine(spawnEnemy());
     }
 
     // Update is called once per frame
     void Update()
     {
+        checkWaveIncrease();
         spawnEnemy();
     }
 
@@ -36,11 +42,33 @@ public class SpawnZone : MonoBehaviour
         return spawnPoint;
     }
 
+    void checkWaveIncrease()
+    {
+        if(currentSpawnCount == enemiesToSpawn)
+        {
+            waveCount++;
+            setNextDifficulty();
+        }
+    }
+
+    void setNextDifficulty()
+    {
+        enemiesToSpawn = 2 * waveCount; 
+    }
+
+    void resetSpawnFunction()
+    {
+        StopCoroutine("spawnEnemy");
+        StartCoroutine("spawnEnemy");
+    }
+
     IEnumerator spawnEnemy()
     {
-        for (;;)
+       while (true)
         {
             yield return new WaitForSeconds(2f);
+
+
             GameObject selectedSpawnPoint = randomlySelectSpawn();
             GameObject spawnedEnemy = (GameObject)Instantiate(enemy, GameObject.Find("Enemies").transform);
             spawnedEnemy.transform.position = (Random.insideUnitSphere * 3)+ selectedSpawnPoint.transform.position;
@@ -54,12 +82,12 @@ public class SpawnZone : MonoBehaviour
             {
                 Debug.Log("Spawn too close. Delaying spawn.");
                 Destroy(spawnedEnemy.gameObject);
+                continue;
             }
-            
+
+            currentSpawnCount++;
             //spawnedEnemy.transform.LookAt(GameObject.FindWithTag("MainCamera").transform.position);
-            
-         
-         
+                   
         }
     }
 
